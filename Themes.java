@@ -28,13 +28,18 @@ public class Themes {
     public static Color menuColor = darkBlue;
     public static Color backgroundColor = darkBlue;
     
-    public static Color defaultButtonColor;
-    public static Color accentButtonColor;
+    public static Color defaultButtonColor = Color.WHITE;
+    public static Color accentButtonColor = lightBlue;
 
     // font themes
     public Font gameFont;
+    public Font gameButtonFont;
     public static final float gameFontSize = 100f;
+    public static final float buttonFontSize = 50f;
     public static final Color gameFontColor = Color.WHITE;
+
+    // spacing
+    public static final int padding = 50;
 
     // text
     public static final String startButtonText = "START";
@@ -43,11 +48,14 @@ public class Themes {
         File fontFile = new File("resources/Fonts/Quinquefive-Ea6d4.ttf");
         try {
             Font tempFont = Font.createFont(Font.TRUETYPE_FONT, fontFile);
-            Font font = tempFont.deriveFont(gameFontSize);
-            gameFont = font;
+            Font fontTitleSize = tempFont.deriveFont(gameFontSize);
+            Font fontMiddleSize = tempFont.deriveFont(buttonFontSize);
+            gameFont = fontTitleSize;
+            gameButtonFont = fontMiddleSize;
         } catch (FontFormatException | IOException ex) {
             System.out.println("failed to create font");
             gameFont = new Font("Consolas", Font.PLAIN, (int)gameFontSize);
+            gameButtonFont = new Font("Consolas", Font.PLAIN, (int)buttonFontSize);
         }
     }
 
